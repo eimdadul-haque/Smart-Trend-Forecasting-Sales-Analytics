@@ -1,0 +1,1 @@
+# Smart-Trend-Forecasting-Sales-Analytics
