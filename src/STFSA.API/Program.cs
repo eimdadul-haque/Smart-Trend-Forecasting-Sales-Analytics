@@ -1,5 +1,8 @@
+using STFSA.API.DI;
 using STFSA.Application.Auth.Interfaces;
 using STFSA.Application.Auth.Services;
+using STFSA.Application.User.Interfaces;
+using STFSA.Application.User.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +12,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddScopedServices();
 
-builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
