@@ -6,21 +6,21 @@ using STFSA.Application.Auth.DTOs;
 namespace STFSA.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/auth")]
     public class AuthController : ControllerBase
     {
         public AuthController()
         {
         }
 
-        [HttpPost("[action]")]
-        public async Task<IActionResult> register([FromBody] RegisterDto input)
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterDto input)
         {
             return Ok();
         }
 
-        [HttpPost("[action]")]
-        public async Task<IActionResult> login([FromBody] LoginDto input)
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginDto input)
         {
             return Ok(new { Token = "dummy_token" });
         }
