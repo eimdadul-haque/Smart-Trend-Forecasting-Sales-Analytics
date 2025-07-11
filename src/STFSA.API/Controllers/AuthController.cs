@@ -13,11 +13,13 @@ namespace STFSA.API.Controllers
         {
         }
 
+        [HttpPost("[action]")]
         public async Task<IActionResult> register([FromBody] RegisterDto input)
         {
             return Ok();
         }
 
+        [HttpPost("[action]")]
         public async Task<IActionResult> login([FromBody] LoginDto input)
         {
             return Ok(new { Token = "dummy_token" });
