@@ -1,8 +1,13 @@
+using STFSA.Application.Auth.Interfaces;
+using STFSA.Application.Auth.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 
