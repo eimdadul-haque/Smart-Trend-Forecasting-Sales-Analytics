@@ -6,7 +6,7 @@ using STFSA.Application.Auth.DTOs;
 namespace STFSA.API.Controllers
 {
     [ApiController]
-    [Route("api/auth")]
+    [Route("api/v{version:apiVersion}/auth")]
     public class AuthController : ControllerBase
     {
         public AuthController()
