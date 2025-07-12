@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.RateLimiting;
 using STFSA.API.DI;
 using STFSA.Application.Auth.Interfaces;
 using STFSA.Application.Auth.Services;
 using STFSA.Application.User.Interfaces;
 using STFSA.Application.User.Services;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,17 @@ builder.Services.AddApiVersioning(options =>
     options.ReportApiVersions = true;
     options.AssumeDefaultVersionWhenUnspecified = true;
     options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+});
+
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddFixedWindowLimiter("fixed", opt =>
+    {
+        opt.PermitLimit = 10;
+        opt.Window = TimeSpan.FromSeconds(10);
+        opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        opt.QueueLimit = 5;
+    });
 });
 
 var app = builder.Build();
