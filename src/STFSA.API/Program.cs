@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.EntityFrameworkCore;
 using STFSA.API.DI;
 using STFSA.Application.Auth.Interfaces;
 using STFSA.Application.Auth.Services;
 using STFSA.Application.User.Interfaces;
 using STFSA.Application.User.Services;
+using STFSA.Infrastructure;
 using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +19,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScopedServices();
 
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddApiVersioning(options =>
 {
