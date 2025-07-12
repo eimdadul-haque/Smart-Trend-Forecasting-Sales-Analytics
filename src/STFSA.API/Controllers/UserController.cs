@@ -8,7 +8,7 @@ namespace STFSA.API.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/users")]
+    [Route("api/v{version:apiVersion}/users")]
     public class UserController : ControllerBase
     {
         public UserController()
