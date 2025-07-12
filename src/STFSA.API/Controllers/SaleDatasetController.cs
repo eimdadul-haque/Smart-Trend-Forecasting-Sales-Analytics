@@ -5,9 +5,9 @@ using System.Data;
 
 namespace STFSA.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
-    [Route("api/dataset")]
+    [Route("api/v{version:apiVersion}/dataset")]
     public class SaleDatasetController : ControllerBase
     {
         public SaleDatasetController()
