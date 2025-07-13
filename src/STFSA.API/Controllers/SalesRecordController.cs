@@ -4,7 +4,7 @@ using System.Data;
 namespace STFSA.API.Controllers
 {
     [ApiController]
-    [Route("api/sales")]
+    [Route("api/v{version:apiVersion}/sales")]
     public class SalesRecordController : ControllerBase
     {
         public SalesRecordController()
