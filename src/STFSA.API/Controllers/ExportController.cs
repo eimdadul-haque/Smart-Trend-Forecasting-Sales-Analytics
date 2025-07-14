@@ -4,7 +4,7 @@ using System.Data;
 namespace STFSA.API.Controllers
 {
     [ApiController]
-    [Route("api/export")]
+    [Route("api/v{version:apiVersion}/export")]
     public class ExportController : ControllerBase
     {
         public ExportController() { }
