@@ -28,4 +28,12 @@ namespace STFSA.API.Controllers
             return Ok();
         }
     }
-}  
+}
+
+
+//| Method | Endpoint | Description |
+//| ------ | ------------------------------------- | ------------------------- |
+//| GET | `/ datasets /{ datasetId}/ anomalies`     | Get detected anomalies    |
+//| POST   | `/datasets/{datasetId}/ anomalies / run` | Trigger anomaly detection |
+//| GET    | `/anomalies/{id}`                     | Get anomaly details       |
+
