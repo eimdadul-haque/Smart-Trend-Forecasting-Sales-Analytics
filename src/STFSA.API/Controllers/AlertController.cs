@@ -28,3 +28,11 @@ namespace STFSA.API.Controllers
     }
 }
 
+
+//| Method | Endpoint | Description |
+//| ------ | ------------------- | ------------------ |
+//| GET | `/ alerts`           | Get user alerts    |
+//| PUT    | `/alerts/{id}/ read` | Mark alert as read |
+//| DELETE | `/ alerts /{ id}`      | Delete an alert    |
+
+
