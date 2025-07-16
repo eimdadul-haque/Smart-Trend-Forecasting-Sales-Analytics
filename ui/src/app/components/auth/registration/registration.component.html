@@ -1,0 +1,105 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body p-4 p-md-5">
+          <div class="text-center mb-4">
+            <h2 class="fw-bold text-primary">Create Your Account</h2>
+            <p class="text-muted">Start predicting your product success today</p>
+          </div>
+
+          <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" formControlName="firstName"
+                  [class.is-invalid]="submitted && f['firstName'].errors">
+                <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+                  <div *ngIf="f['firstName'].errors?.['required']">First name is required</div>
+                  <div *ngIf="f['firstName'].errors?.['minlength']">Minimum 2 characters required</div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" formControlName="lastName"
+                  [class.is-invalid]="submitted && f['lastName'].errors">
+                <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+                  <div *ngIf="f['lastName'].errors?.['required']">Last name is required</div>
+                  <div *ngIf="f['lastName'].errors?.['minlength']">Minimum 2 characters required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" formControlName="email"
+                [class.is-invalid]="submitted && f['email'].errors">
+              <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors?.['required']">Email is required</div>
+                <div *ngIf="f['email'].errors?.['email']">Please enter a valid email</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-group">
+                <input [type]="passwordFieldType" class="form-control" id="password" formControlName="password"
+                  [class.is-invalid]="submitted && f['password'].errors">
+                <button class="btn btn-outline-secondary" type="button"
+                  (click)="togglePasswordVisibility('password')">
+                  <i class="bi" [ngClass]="{'bi-eye': passwordFieldType === 'password', 'bi-eye-slash': passwordFieldType === 'text'}"></i>
+                </button>
+              </div>
+              <div *ngIf="submitted && f['password'].errors" class="invalid-feedback d-block">
+                <div *ngIf="f['password'].errors?.['required']">Password is required</div>
+                <div *ngIf="f['password'].errors?.['minlength']">Minimum 8 characters required</div>
+                <div *ngIf="f['password'].errors?.['pattern']">
+                  Must include uppercase, lowercase, number, and special character
+                </div>
+              </div>
+              <small class="text-muted">Use 8+ characters with uppercase, lowercase, number, and special character</small>
+            </div>
+
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirm Password</label>
+              <div class="input-group">
+                <input [type]="confirmPasswordFieldType" class="form-control" id="confirmPassword" 
+                  formControlName="confirmPassword" [class.is-invalid]="submitted && registrationForm.errors?.['mustMatch']">
+                <button class="btn btn-outline-secondary" type="button"
+                  (click)="togglePasswordVisibility('confirmPassword')">
+                  <i class="bi" [ngClass]="{'bi-eye': confirmPasswordFieldType === 'password', 'bi-eye-slash': confirmPasswordFieldType === 'text'}"></i>
+                </button>
+              </div>
+              <div *ngIf="submitted && registrationForm.errors?.['mustMatch']" class="invalid-feedback d-block">
+                Passwords do not match
+              </div>
+            </div>
+
+            <div class="mb-4 form-check">
+              <input type="checkbox" class="form-check-input" id="acceptTerms" formControlName="acceptTerms"
+                [class.is-invalid]="submitted && f['acceptTerms'].errors">
+              <label class="form-check-label" for="acceptTerms">
+                I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and 
+                <a href="#" class="text-decoration-none">Privacy Policy</a>
+              </label>
+              <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">
+                You must accept the terms and conditions
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 py-2 mb-3">
+              <span *ngIf="!submitted">Create Account</span>
+              <span *ngIf="submitted && registrationForm.valid">Processing...</span>
+              <span *ngIf="submitted && registrationForm.invalid">Please fix errors</span>
+            </button>
+
+            <div class="text-center">
+              <p class="text-muted mb-0">Already have an account? <a routerLink="/auth/login" class="text-decoration-none">Sign in</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
