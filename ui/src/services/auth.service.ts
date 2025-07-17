@@ -8,7 +8,7 @@ import { Login } from "../app/models/auth";
     providedIn: 'root'
 })
 export class AuthService {
-  private readonly apiUrl = `${environment.apiBaseUrl}/auth`;
+  private readonly apiUrl = `${environment.apiBaseUrl}/v1/auth`;
 
   constructor(
     private http: HttpClient) { }
