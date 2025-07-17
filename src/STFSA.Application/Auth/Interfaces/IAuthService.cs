@@ -9,7 +9,7 @@ namespace STFSA.Application.Auth.Interfaces
 {
     public interface IAuthService
     {
-        Task<bool> register(RegisterDto input);
-        Task<string> login(LoginDto input);
+        Task<bool> Register(RegisterDto input);
+        Task<string> Login(LoginDto input);
     }
 }

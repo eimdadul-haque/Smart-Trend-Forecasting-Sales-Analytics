@@ -19,7 +19,7 @@ namespace STFSA.Application.Auth.Services
             _userManager = userManager;
         }
 
-        public async Task<bool> register(RegisterDto input)
+        public async Task<bool> Register(RegisterDto input)
         {
 
             var user = new ApplicationUser
@@ -39,7 +39,7 @@ namespace STFSA.Application.Auth.Services
                 return false;
         }
 
-        public async Task<string> login(LoginDto input)
+        public async Task<string> Login(LoginDto input)
         {
             return "dummy_token";
         }
