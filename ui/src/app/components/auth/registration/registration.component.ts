@@ -83,11 +83,13 @@ export class RegistrationComponent implements OnInit {
       lastName: this.registrationForm.get('lastName')?.value,
       email: this.registrationForm.get('email')?.value,
       password: this.registrationForm.get('password')?.value,
+      phoneNumber: this.registrationForm.get('phoneNumber')?.value,
       acceptTerms: this.registrationForm.get('acceptTerms')?.value
     } as Register;
 
     this.authService.register(registration).subscribe(response => {
       this.submitted = false;
+      this.router.navigateByUrl('/auth/login');
     });
   }
 }

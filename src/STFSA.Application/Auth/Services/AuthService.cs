@@ -28,7 +28,8 @@ namespace STFSA.Application.Auth.Services
                 LastName = input.LastName,
                 Email = input.Email,
                 UserName = $"{input.FirstName.ToLower()}_{input.LastName.ToLower()}",
-                PhoneNumber = input.PhoneNumber
+                PhoneNumber = input.PhoneNumber,
+                AcceptTerms = input.AcceptTerms
             };
 
             var result = await _userManager.CreateAsync(user, input.Password);
