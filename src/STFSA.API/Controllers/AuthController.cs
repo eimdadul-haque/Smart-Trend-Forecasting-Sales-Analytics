@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Win32;
 using STFSA.Application.Auth.DTOs;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using STFSA.Application.Auth.Interfaces;
 
 namespace STFSA.API.Controllers
 {
@@ -11,14 +11,17 @@ namespace STFSA.API.Controllers
     [Route("api/v{version:apiVersion}/auth")]
     public class AuthController : ControllerBase
     {
-        public AuthController()
+        private readonly IAuthService _authService;
+        public AuthController(
+            IAuthService authService)
         {
+            _authService = authService;
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto input)
         {
-            return Ok();
+            return Ok(await _authService.Register(input));
         }
 
         [HttpPost("login")]
