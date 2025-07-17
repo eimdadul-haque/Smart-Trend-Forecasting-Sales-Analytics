@@ -57,9 +57,22 @@ builder.Services.AddRateLimiter(options =>
     });
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(opt =>
+    {
+        opt.WithOrigins("https://localhost:4200", "http://localhost:4200")
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+app.UseCors();
 
 app.UseSwagger();
 
