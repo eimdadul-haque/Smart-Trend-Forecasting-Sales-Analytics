@@ -42,13 +42,22 @@
             </div>
 
             <div class="mb-3">
+              <label for="phoneNumber" class="form-label">Phone Number</label>
+              <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber"
+                [class.is-invalid]="submitted && f['email'].errors">
+              <div *ngIf="submitted && f['phoneNumber'].errors" class="invalid-feedback">
+                <div *ngIf="f['phoneNumber'].errors?.['required']">Email is required</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
               <label for="password" class="form-label">Password</label>
               <div class="input-group">
                 <input [type]="passwordFieldType" class="form-control" id="password" formControlName="password"
                   [class.is-invalid]="submitted && f['password'].errors">
-                <button class="btn btn-outline-secondary" type="button"
-                  (click)="togglePasswordVisibility('password')">
-                  <i class="bi" [ngClass]="{'bi-eye': passwordFieldType === 'password', 'bi-eye-slash': passwordFieldType === 'text'}"></i>
+                <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility('password')">
+                  <i class="bi"
+                    [ngClass]="{'bi-eye': passwordFieldType === 'password', 'bi-eye-slash': passwordFieldType === 'text'}"></i>
                 </button>
               </div>
               <div *ngIf="submitted && f['password'].errors" class="invalid-feedback d-block">
@@ -58,17 +67,20 @@
                   Must include uppercase, lowercase, number, and special character
                 </div>
               </div>
-              <small class="text-muted">Use 8+ characters with uppercase, lowercase, number, and special character</small>
+              <small class="text-muted">Use 8+ characters with uppercase, lowercase, number, and special
+                character</small>
             </div>
 
             <div class="mb-3">
               <label for="confirmPassword" class="form-label">Confirm Password</label>
               <div class="input-group">
-                <input [type]="confirmPasswordFieldType" class="form-control" id="confirmPassword" 
-                  formControlName="confirmPassword" [class.is-invalid]="submitted && registrationForm.errors?.['mustMatch']">
+                <input [type]="confirmPasswordFieldType" class="form-control" id="confirmPassword"
+                  formControlName="confirmPassword"
+                  [class.is-invalid]="submitted && registrationForm.errors?.['mustMatch']">
                 <button class="btn btn-outline-secondary" type="button"
                   (click)="togglePasswordVisibility('confirmPassword')">
-                  <i class="bi" [ngClass]="{'bi-eye': confirmPasswordFieldType === 'password', 'bi-eye-slash': confirmPasswordFieldType === 'text'}"></i>
+                  <i class="bi"
+                    [ngClass]="{'bi-eye': confirmPasswordFieldType === 'password', 'bi-eye-slash': confirmPasswordFieldType === 'text'}"></i>
                 </button>
               </div>
               <div *ngIf="submitted && registrationForm.errors?.['mustMatch']" class="invalid-feedback d-block">
@@ -80,7 +92,7 @@
               <input type="checkbox" class="form-check-input" id="acceptTerms" formControlName="acceptTerms"
                 [class.is-invalid]="submitted && f['acceptTerms'].errors">
               <label class="form-check-label" for="acceptTerms">
-                I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and 
+                I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and
                 <a href="#" class="text-decoration-none">Privacy Policy</a>
               </label>
               <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">
@@ -95,7 +107,8 @@
             </button>
 
             <div class="text-center">
-              <p class="text-muted mb-0">Already have an account? <a routerLink="/auth/login" class="text-decoration-none">Sign in</a></p>
+              <p class="text-muted mb-0">Already have an account? <a routerLink="/auth/login"
+                  class="text-decoration-none">Sign in</a></p>
             </div>
           </form>
         </div>

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../../services/auth.service';
+import { Register } from '../../../models/auth';
 
 @Component({
   selector: 'app-registration',
@@ -8,27 +10,38 @@ import { Router } from '@angular/router';
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.scss'
 })
-export class RegistrationComponent {
+export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
   submitted = false;
   passwordFieldType: string = 'password';
   confirmPasswordFieldType: string = 'password';
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder, 
+    private router: Router,
+    private authService: AuthService) {
+
     this.registrationForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [
-        Validators.required,
-        Validators.minLength(8),
-        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')
-      ]],
+      phoneNumber: ['', [Validators.required]],
+      // password: ['', [
+      //   Validators.required,
+      //   Validators.minLength(8),
+      //   Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')
+      // ]],
+      password: ['', [Validators.required]],
       confirmPassword: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue]
-    }, { 
+    }, {
       validators: this.mustMatch('password', 'confirmPassword')
     });
+
+  }
+
+  ngOnInit(): void {
+
   }
 
   mustMatch(controlName: string, matchingControlName: string) {
@@ -65,9 +78,16 @@ export class RegistrationComponent {
       return;
     }
 
-    // Simulate API call
-    setTimeout(() => {
-      this.router.navigate(['/dashboard']);
-    }, 1500);
+    var registration = {
+      firstName: this.registrationForm.get('firstName')?.value,
+      lastName: this.registrationForm.get('lastName')?.value,
+      email: this.registrationForm.get('email')?.value,
+      password: this.registrationForm.get('password')?.value,
+      acceptTerms: this.registrationForm.get('acceptTerms')?.value
+    } as Register;
+
+    this.authService.register(registration).subscribe(response => {
+      this.submitted = false;
+    });
   }
 }
