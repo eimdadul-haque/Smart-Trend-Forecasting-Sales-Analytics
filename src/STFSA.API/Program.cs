@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using STFSA.API.DI;
@@ -5,6 +6,7 @@ using STFSA.Application.Auth.Interfaces;
 using STFSA.Application.Auth.Services;
 using STFSA.Application.User.Interfaces;
 using STFSA.Application.User.Services;
+using STFSA.Domain.Entities;
 using STFSA.Infrastructure;
 using System.Threading.RateLimiting;
 
@@ -20,7 +22,12 @@ builder.Services.AddScopedServices();
 
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<ApplicationDbContext>(option 
+        => option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddApiVersioning(options =>
 {
