@@ -10,7 +10,8 @@ import { Login } from "../app/models/auth";
 export class AuthService {
   private readonly apiUrl = `${environment.apiBaseUrl}/auth`;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient) { }
 
   login(credentials: Login): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, credentials);
