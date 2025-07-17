@@ -13,6 +13,6 @@ namespace STFSA.Application.Auth.DTOs
         public required string Email { get; set; }
         public required string Password { get; set; }
         public required string PhoneNumber { get; set; }
-
+        public required bool AcceptTerms { get; set; }
     }
 }
