@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-landing',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss'
 })
-export class LandingComponent {
+export class LandingComponent implements OnInit {
   features = [
     {
       icon: 'bi-graph-up',
@@ -40,9 +41,20 @@ export class LandingComponent {
   ];
 
   constructor(
-    private router: Router) {}
+    private router: Router,
+    private authService: AuthService) { }
+
+  ngOnInit(): void {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigateByUrl('visual/dashboard');
+    }
+  }
 
   navigateTo(route: string) {
-    this.router.navigateByUrl('auth/login');
+    if (this.authService.isLoggedIn()) {
+      this.router.navigateByUrl('visual/dashboard');
+    } else {
+      this.router.navigateByUrl('auth/login');
+    }
   }
 }

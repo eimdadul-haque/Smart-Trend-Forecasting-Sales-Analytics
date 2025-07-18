@@ -43,9 +43,13 @@ export class LoginComponent {
     } as Login;
 
     this.isLoading = true;
-    this.authService.login(login).subscribe(response => {
-      this.isLoading = false;
-      this.router.navigateByUrl('/visual/dashboard');
+    this.authService.login(login).subscribe({
+      next: (res) => {
+        this.router.navigateByUrl('/visual/dashboard');
+      },
+      error: (err) => {
+        this.isLoading = false;
+      }
     });
   }
 

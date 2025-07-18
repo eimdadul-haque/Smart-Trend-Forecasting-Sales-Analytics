@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { SidebarComponent } from './components/reusable/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'ui';
+  @ViewChild(SidebarComponent) sidebar!: SidebarComponent;
+  
+  // Optional: Toggle sidebar from other components
+  toggleSidebar() {
+    this.sidebar.toggleCollapse();
+  }
 }
