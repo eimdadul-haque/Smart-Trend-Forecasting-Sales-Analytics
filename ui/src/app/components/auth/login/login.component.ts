@@ -37,13 +37,15 @@ export class LoginComponent {
     }
 
     var login = {
-      userName: this.loginForm.get('email')?.value,
-      password: this.loginForm.get('password')?.value
+      email: this.loginForm.get('email')?.value,
+      password: this.loginForm.get('password')?.value,
+      rememberMe: this.loginForm.get('rememberMe')?.value
     } as Login;
 
     this.isLoading = true;
     this.authService.login(login).subscribe(response => {
       this.isLoading = false;
+      this.router.navigateByUrl('/visual/dashboard');
     });
   }
 
