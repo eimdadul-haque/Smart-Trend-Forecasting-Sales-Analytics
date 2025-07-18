@@ -21,13 +21,21 @@ namespace STFSA.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto input)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             return Ok(await _authService.Register(input));
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto input)
         {
-            return Ok(new { Token = "dummy_token" });
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var token = await _authService.Login(input);
+
+            return Ok(new { token = token });
         }
     }
 }
