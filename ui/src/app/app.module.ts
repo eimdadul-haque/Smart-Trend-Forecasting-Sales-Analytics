@@ -8,8 +8,7 @@ import { SidebarComponent } from './components/reusable/sidebar/sidebar.componen
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SidebarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

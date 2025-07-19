@@ -1,46 +1,21 @@
-<div class="sidebar" [class.collapsed]="isCollapsed" [class.mobile-view]="isMobileView">
-  <div class="sidebar-header">
-    <h4 *ngIf="!isCollapsed">Admin Panel</h4>
-    <button class="toggle-btn" (click)="toggleCollapse()">
-      <i class="bi" [class.bi-chevron-double-left]="!isCollapsed" [class.bi-chevron-double-right]="isCollapsed"></i>
-    </button>
-  </div>
 
-  <div class="sidebar-menu">
-    <div *ngFor="let item of menuItems" class="menu-item" 
-         [class.active]="isActive(item.route) || hasActiveChild(item)"
-         [class.expanded]="item.isExpanded">
-      <div class="menu-title" (click)="toggleSubMenu(item)">
-        <i class="bi {{item.icon}}"></i>
-        <span *ngIf="!isCollapsed">{{item.title}}</span>
-        <i *ngIf="item.children && !isCollapsed" class="bi float-end" 
-           [class.bi-chevron-down]="item.isExpanded" 
-           [class.bi-chevron-right]="!item.isExpanded"></i>
+<div class="sidebar-wrapper">
+  <div class="logo">
+    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+      <div class="logo-image-small">
+        <img src="assets/img/angular2-logo.png">
       </div>
-      
-      <div *ngIf="item.children && (item.isExpanded || isCollapsed)" class="sub-menu">
-        <a *ngFor="let child of item.children" 
-           [routerLink]="child.route" 
-           routerLinkActive="active"
-           [routerLinkActiveOptions]="{ exact: true }">
-          <i class="bi bi-dot"></i>
-          <span *ngIf="!isCollapsed">{{child.title}}</span>
-        </a>
-      </div>
-    </div>
+    </a>
+    <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+      Creative Tim
+    </a>
   </div>
-
-  <div class="sidebar-footer">
-    <div class="user-info" *ngIf="!isCollapsed">
-      <!-- <div class="user-name">{{authService.currentUser?.name}}</div>
-      <div class="user-email">{{authService.currentUser?.email}}</div> -->
-      <div class="user-email">{{'name'}}</div>
-    </div>
-    <button class="logout-btn" (click)="authService.logout()">
-      <i class="bi bi-box-arrow-right"></i>
-      <span *ngIf="!isCollapsed">Logout</span>
-    </button>
-  </div>
+    <ul class="nav">
+        <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
+            <a [routerLink]="[menuItem.path]">
+                <i class="nc-icon {{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
 </div>
-
-<div class="sidebar-overlay" *ngIf="isMobileView && !isCollapsed" (click)="toggleCollapse()"></div>
