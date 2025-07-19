@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './authGuard/AuthGuard';
+import { AuthenticatedLayoutComponent } from './components/auth/authenticated-layout/authenticated-layout.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,18 @@ const routes: Routes = [
     path: 'visual',
     loadChildren: () => import('./components/visual/visual.module').then(m => m.VisualModule),
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: '',
+    component: AuthenticatedLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'visual',
+        loadChildren: () => import('./components/visual/visual.module').then(m => m.VisualModule),
+      }
+    ]
+  },
 ];
 
 @NgModule({

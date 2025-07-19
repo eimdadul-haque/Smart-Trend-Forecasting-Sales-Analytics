@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { SidebarComponent } from './components/reusable/sidebar/sidebar.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,7 @@ import { SidebarComponent } from './components/reusable/sidebar/sidebar.componen
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  @ViewChild(SidebarComponent) sidebar!: SidebarComponent;
-  
-  // Optional: Toggle sidebar from other components
-  toggleSidebar() {
-    this.sidebar.toggleCollapse();
-  }
+  constructor(
+    public authService: AuthService
+  ) { }
 }
