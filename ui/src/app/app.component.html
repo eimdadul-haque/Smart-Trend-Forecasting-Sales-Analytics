@@ -1,3 +1,9 @@
+<!-- <div class="app-container">
+  <app-sidebar></app-sidebar>
+  
+  <div class="main-content" [class.sidebar-collapsed]="sidebar.isCollapsed">
+    <router-outlet></router-outlet>
+  </div>
+</div> -->
 
-<router-outlet *ngIf="!authService.isAuthenticated()"></router-outlet>
-<app-authenticated-layout *ngIf="authService.isAuthenticated()"></app-authenticated-layout>
+<router-outlet></router-outlet>
