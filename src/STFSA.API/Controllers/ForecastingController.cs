@@ -36,10 +36,3 @@ namespace STFSA.API.Controllers
         }
     }
 }
-
-//| Method | Endpoint | Description |
-//| ------ | ---------------------------------------- | ---------------------------------- |
-//| POST | `/ datasets /{ datasetId}/ forecast / run`     | Trigger a forecast(sync or async) |
-//| GET | `/ datasets /{ datasetId}/ forecast / latest`  | Get latest forecast results        |
-//| GET    | `/datasets/{datasetId}/ forecast / history` | Get past forecast runs             |
-//| GET    | `/forecast/{forecastId}`                 | Get forecast details by ID         |
