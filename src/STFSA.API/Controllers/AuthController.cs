@@ -40,13 +40,3 @@ namespace STFSA.API.Controllers
     }
 }
 
-
-//| Method | Endpoint | Description |
-//| ------ | ------------------ | ------------------------------------ |
-//| POST | `/ auth / register`   | Register new user                    |
-//| POST | `/ auth / login`      | User login(returns JWT) |
-//| GET | `/ users / profile`   | Get current user info (JWT required) |
-//| PUT    | `/users/profile`   | Update profile info                  |
-//| GET    | `/users`           | Get all users (Admin only)           |
-//| PUT    | `/users/{id}/ role` | Change user role(Admin only)        |
-
