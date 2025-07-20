@@ -30,11 +30,3 @@ namespace STFSA.API.Controllers
         }
     }
 }
-
-
-//| Method | Endpoint | Description |
-//| ------ | ---------------------------------------- | ----------------------------------------------- |
-//| GET | `/ datasets /{ datasetId}/ records`          | Get all sales records in a dataset              |
-//| GET    | `/datasets/{datasetId}/ records / stats`    | Summary statistics(total sales, revenue, etc.) |
-//| GET | `/ datasets /{ datasetId}/ records / download` | Download raw data as CSV/Excel                  |
-
