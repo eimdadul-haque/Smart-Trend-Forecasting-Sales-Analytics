@@ -24,9 +24,3 @@ namespace STFSA.API.Controllers
         }
     }
 }
-
-//| Method | Endpoint | Description |
-//| ------ | ------------------------------------------- | ------------------------------------- |
-//| GET | `/ datasets /{ datasetId}/ recommendations`     | Get AI - based insights and suggestions |
-//| POST   | `/datasets/{datasetId}/ recommendations / run` | Run recommendation engine             |
-
