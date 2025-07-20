@@ -9,7 +9,8 @@ export interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-    { path: 'visual/dashboard',     title: 'Dashboard',         icon:'nc-bank',       class: '' },
+    { path: 'visual/dashboard', title: 'Dashboard', icon:'nc-bank', class: '' },
+    { path: 'forecasting', title: 'Forecasting', icon:'nc-bank', class: '' },
 ];
 @Component({
   selector: 'app-sidebar',
