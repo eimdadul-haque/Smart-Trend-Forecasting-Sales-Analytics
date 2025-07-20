@@ -11,6 +11,7 @@ export interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
     { path: 'visual/dashboard', title: 'Dashboard', icon:'nc-bank', class: '' },
     { path: 'forecasting', title: 'Forecasting', icon:'nc-bank', class: '' },
+    { path: 'sales-record', title: 'Sales Record', icon:'nc-bank', class: '' },
 ];
 @Component({
   selector: 'app-sidebar',

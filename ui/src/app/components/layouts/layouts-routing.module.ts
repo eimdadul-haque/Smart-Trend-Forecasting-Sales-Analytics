@@ -12,6 +12,11 @@ const routes: Routes = [
     path: 'forecasting',
     loadChildren: () => import('../forecasting/forecasting.module').then(m => m.ForecastingModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: '  sales-record',
+    loadChildren: () => import('../sales-record/sales-record.module').then(m => m.SalesRecordModule),
+    canActivate: [AuthGuard]
   }
 ];
 
