@@ -42,13 +42,3 @@ namespace STFSA.API.Controllers
         }
     }
 }
-
-
-//| Method | Endpoint | Description |
-//| ------ | ------------------ | ------------------------------------ |
-//| GET | `/ datasets`        | Get list of datasets (owned by user) |
-//| POST   | `/datasets/upload` | Upload CSV/Excel file                |
-//| GET    | `/datasets/{id}`   | Get dataset details                  |
-//| DELETE | `/datasets/{id}`   | Delete a dataset                     |
-
-
