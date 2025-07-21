@@ -5,7 +5,7 @@ import { SalesRecordComponent } from './sales-record.component';
 const routes: Routes = [
   {
     path: '',
-    component:   SalesRecordComponent
+    component: SalesRecordComponent
   }
 ];
 
@@ -14,3 +14,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class SalesRecordRoutingModule { }
+
+
