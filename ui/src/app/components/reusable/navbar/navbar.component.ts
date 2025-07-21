@@ -96,5 +96,4 @@ export class NavbarComponent implements OnInit{
         }
 
       }
-
 }
